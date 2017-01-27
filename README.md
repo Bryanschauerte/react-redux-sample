@@ -2,6 +2,10 @@
 
 This is a code sample that was built on top of a redux minimal starter kit: https://github.com/catalin-luntraru/redux-minimal
 
+# Viewing the bundled site
+1. Download the public folder
+2. Open in the index.html file in your browser
+
 # Getting started
 
 1. Before you start working with redux-minimal, you first need to setup your environment. Make sure you have the following installed:
