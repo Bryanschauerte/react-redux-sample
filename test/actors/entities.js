@@ -1,14 +1,18 @@
-import actorsReducer, {
-  getActorEntity,
-  getActors
-} from "../../src/components/actors/entities";
+import activitiesReducer, {
+  getActivitiesEntity,
+  getActivities,
+  getError,
+  getIsLoaded,
+  getIsLoading,
+  getShouldDisplayActivites
+} from "../../src/components/activities/entities";
 import { expect } from 'chai';
 import deepFreeze from 'deep-freeze';
 import {
-  ACTORS_LOAD,
-  ACTORS_LOAD_FAILURE,
-  ACTORS_LOAD_SUCCESS
-} from "../../src/components/actors/actions";
+  ACTIVITIES_LOAD,
+  ACTIVITIES_LOAD_FAILURE,
+  ACTIVITIES_LOAD_SUCCESS
+} from "../../src/components/activities/actions";
 
 const defaultState = {
   loaded: false,
@@ -17,43 +21,76 @@ const defaultState = {
 deepFreeze(defaultState);
 
 const loadAction = {
-  type: ACTORS_LOAD
+  type: ACTIVITIES_LOAD
 };
 deepFreeze(loadAction);
 
 const loadSuccessAction = {
-  type: ACTORS_LOAD_SUCCESS,
-  actors: 'actors'
+  type: ACTIVITIES_LOAD_SUCCESS,
+  activities: 'activities'
 };
 deepFreeze(loadSuccessAction);
 
 const loadFailureAction = {
-  type: ACTORS_LOAD_FAILURE
+  type: ACTIVITIES_LOAD_FAILURE
 };
 deepFreeze(loadFailureAction);
 
-describe('Actors entities', () => {
-  describe('getActorEntity', () => {
+describe('Activities entities', () => {
+  describe('getActivitiesEntity', () => {
     it('gets the actor entity from the state', () => {
       const state = {
-        actors: 'actors',
+        activities: 'activities',
         random: 'random'
       };
 
-      expect(getActorEntity(state))
-        .to.eql('actors');
+      expect(getActivitiesEntity(state))
+        .to.eql('activities');
     });
   });
 
-  describe('getActors', () => {
-    it('gets the actors from the actor entity', () => {
-      expect(getActors.resultFunc({actors: 'actors'}))
-        .to.eql('actors');
+  describe('getActivities', () => {
+    it('gets the activities from the actor entity', () => {
+      expect(getActivities.resultFunc({activities: 'activities'}))
+        .to.eql('activities');
     });
   });
 
-  describe('Actors reducer', () => {
-    describe('ACTORS_LOAD', () => {
+  describe('getIsLoading', () => {
+    it('gets the loading state from the actor entity', () => {
+      expect(getIsLoading.resultFunc({loading: true}))
+        .to.be.true;
+    });
+  });
+
+  describe('getIsLoaded', () => {
+    it('gets the loaded state from the actor entity', () => {
+      expect(getIsLoaded.resultFunc({loaded: true}))
+        .to.be.true;
+    });
+  });
+
+  describe('getError', () => {
+    it('gets the error from the actor entity', () => {
+      expect(getError.resultFunc({error: true}))
+        .to.be.true;
+    });
+  });
+
+  describe('getShouldDisplayActivites', () => {
+    it('returns true if there is no error, the activities has a length, and loaded is true', () => {
+      expect(getShouldDisplayActivites.resultFunc(true, ['activity'], false))
+        .to.be.true;
+    });
+
+    it('returns false if there is no error, activities is an empty array, and loaded is true', () => {
+      expect(getShouldDisplayActivites.resultFunc(true, [], false))
+        .to.be.falsy;
+    });
+  });
+
+  describe('Activities reducer', () => {
+    describe('ACTIVITIES_LOAD', () => {
       it('sets the loading state to true', () => {
         //Set up
         const expectedState = {
@@ -62,27 +99,27 @@ describe('Actors entities', () => {
         };
 
         //Run unit and verify expectations
-        expect(actorsReducer(defaultState, loadAction))
+        expect(activitiesReducer(defaultState, loadAction))
           .to.eql(expectedState);
       });
     });
 
-    describe('ACTORS_LOAD_SUCCESS', () => {
-      it('sets the loading state to false and adds the actors to the state', () => {
+    describe('ACTIVITIES_LOAD_SUCCESS', () => {
+      it('sets the loading state to false and adds the activities to the state', () => {
         //Set up
         const expectedState = {
-          actors: 'actors',
+          activities: 'activities',
           loading: false,
           loaded: true
         };
 
         //Run unit and verify expectations
-        expect(actorsReducer(defaultState, loadSuccessAction))
+        expect(activitiesReducer(defaultState, loadSuccessAction))
           .to.eql(expectedState);
       });
     });
 
-    describe('ACTORS_LOAD_FAILURE', () => {
+    describe('ACTIVITIES_LOAD_FAILURE', () => {
       it('sets the loading state to false and adds an error to the state', () => {
         //Set up
         const expectedState = {
@@ -92,7 +129,7 @@ describe('Actors entities', () => {
         };
 
         //Run unit and verify expectations
-        expect(actorsReducer(defaultState, loadFailureAction))
+        expect(activitiesReducer(defaultState, loadFailureAction))
           .to.eql(expectedState);
       });
     });

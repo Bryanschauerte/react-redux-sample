@@ -1,5 +1,5 @@
 import React from 'react';
-import Actors from './actors/Actors';
+import Activities from './activities/Activities';
 
 // Home page component
 export default class Home extends React.Component {
@@ -7,7 +7,7 @@ export default class Home extends React.Component {
   render() {
     return (
       <div className="page-home">
-        <Actors />
+        <Activities />
       </div>
     );
   }
