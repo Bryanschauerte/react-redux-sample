@@ -4,7 +4,7 @@ This is a code sample that was built on top of a redux minimal starter kit: http
 
 # Viewing the bundled site
 1. Download the public folder
-2. Open in the index.html file in your browser
+2. Open the index.html file in your browser
 
 # Getting started
 
