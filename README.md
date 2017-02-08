@@ -17,8 +17,8 @@ This is a code sample that was built on top of a redux minimal starter kit: http
 
     ```sh
     cd C:\js\node\apps
-    git clone https://github.com/catalin-luntraru/redux-minimal.git hello-world
-    cd hello-world
+    git clone https://github.com/WesRisenmay/react-redux-sample.git code-sample
+    cd code-sample
     npm install
     npm start
     ```
