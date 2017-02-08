@@ -1,4 +1,5 @@
 import React, {PropTypes} from 'react';
+import Response from'./Response';
 
 const Activity = ({
   activityUrl,
@@ -9,6 +10,7 @@ const Activity = ({
   userName
 }) => (
   <tr>
+    <Response />
     <td>
       {message}
     </td>

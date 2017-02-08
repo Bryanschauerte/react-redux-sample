@@ -44,7 +44,6 @@
     "react-router-redux": "^4.0.7",
     "redux": "^3.6.0",
     "redux-form": "^6.4.3",
-    "redux-saga": "^0.14.3",
     "reselect": "^2.5.1"
   },
   "devDependencies": {

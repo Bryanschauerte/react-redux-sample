@@ -27,6 +27,7 @@ export class Activities extends Component {
         <Table striped bordered condensed hover>
           <thead>
             <tr>
+              <th>Reply/Like</th>
               <th>Message</th>
               <th>Image</th>
               <th>User Name</th>

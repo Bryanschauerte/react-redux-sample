@@ -52,13 +52,13 @@ export default function reducer(state = defaultState, action = {}) {
 }
 
 export const getActivitiesEntity = createSelector(
-    state => state,
-    state => _get(state, 'activities')
+  state => state,
+  state => _get(state, 'activities')
 );
 
 export const getActivities = createSelector(
-    getActivitiesEntity,
-    entity => _get(entity, 'activities')
+  getActivitiesEntity,
+  entity => _get(entity, 'activities')
 );
 
 export const getIsLoading = createSelector(

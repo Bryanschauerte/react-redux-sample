@@ -16,4 +16,4 @@ export function fetchActivities(dispatch) {
         });
       })
     }, () => dispatch({type: ACTIVITIES_LOAD_FAILURE}));
-}
+};
